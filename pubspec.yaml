@@ -1,8 +1,8 @@
-name: quiz_game_app
-description: A simple multiple-choice quiz app built with Flutter and Provider.
+name: quiz_game_app_plus
+description: A multiple-choice quiz app with categories, points, and improved UI.
 publish_to: "none"
 
-version: 1.0.0+1
+version: 1.1.0+1
 
 environment:
   sdk: ">=3.3.0 <4.0.0"

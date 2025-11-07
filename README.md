@@ -1,27 +1,17 @@
-# Quiz Game App
+# Quiz Game+
 
-A multiple-choice quiz app built with Flutter and Provider, matching the **Mobile Development Foundations Exam** requirements.
+An enhanced multiple-choice quiz app with **two categories**, **points**, and a cleaner UI.
 
-## Features Implemented
-- Questions stored in `List<Map<String, dynamic>>`.
-- One question per screen with **Column**, **Row**, **Expanded**, **Padding**.
-- **Radio** inputs with form-like validation (prevents advancing without a selection).
-- Navigation to next question; **Score Page** after the last question.
-- Score calculation via a function; conditional performance messages.
-- State management with **Provider**; interactive page is `StatefulWidget`, static pages are `StatelessWidget`.
-- **MediaQuery** for responsive text sizing.
-- “Restart Quiz” resets state and returns to the welcome screen.
+## New Features (beyond the spec)
+- Start menu with **two quiz categories**: *General Knowledge* (1 point each) and *Flutter Basics* (2 points each).
+- **Improved UI**: gradient background, cards, and progress bar.
+- **Point-based scoring** with per-question points and total points.
+- **Chips** displaying current question points and live score.
+- Clean navigation back to the start menu from the score page.
 
-## How to Run
-1. Ensure Flutter SDK is installed.
-2. From the project root:
-   ```bash
-   flutter pub get
-   flutter run
-   ```
 
-## File Structure
-```
+## Structure
+
 lib/
   main.dart
   quiz_provider.dart
@@ -31,9 +21,3 @@ lib/
     welcome_page.dart
     question_page.dart
     score_page.dart
-```
-
-## Bonus Ideas (optional)
-- Add animations, progress bar, or themed styling.
-- Load questions from JSON or network.
-- Shuffle questions and answers.

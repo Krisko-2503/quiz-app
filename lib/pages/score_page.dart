@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../quiz_provider.dart';
-import '../data/questions.dart';
 import 'welcome_page.dart';
 
 class ScorePage extends StatelessWidget {
   const ScorePage({super.key});
 
-  String getMessage(int score, int total) {
-    if (score == total) return 'Excellent';
-    if (score >= (total * 0.6).round()) return 'Good';
-    return 'Try Again';
-    }
+  String getMessage(int points, int total) {
+    final ratio = points / total;
+    if (ratio == 1) return 'Perfect!';
+    if (ratio >= 0.75) return 'Excellent';
+    if (ratio >= 0.5) return 'Good';
+    return 'Keep Practicing';
+  }
 
   @override
   Widget build(BuildContext context) {
-    final quiz = Provider.of<QuizProvider>(context);
-    final total = quizQuestions.length;
+    final quiz = context.watch<QuizProvider>();
+    final total = quiz.totalPoints;
 
     return Scaffold(
       body: SafeArea(
@@ -26,11 +27,13 @@ class ScorePage extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text('Your Score', style: Theme.of(context).textTheme.titleLarge),
+                Text('Your Result', style: Theme.of(context).textTheme.titleLarge),
                 const SizedBox(height: 10),
-                Text('${quiz.score} / $total', style: const TextStyle(fontSize: 36, fontWeight: FontWeight.bold)),
+                Text("${quiz.scorePoints} / $total pts", style: const TextStyle(fontSize: 36, fontWeight: FontWeight.bold)),
+                const SizedBox(height: 6),
+                Text("${quiz.correctCount} correct out of ${quiz.totalQuestions}", style: const TextStyle(fontSize: 16)),
                 const SizedBox(height: 10),
-                Text(getMessage(quiz.score, total), style: const TextStyle(fontSize: 22)),
+                Text(getMessage(quiz.scorePoints, total), style: const TextStyle(fontSize: 22)),
                 const SizedBox(height: 28),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -46,7 +49,7 @@ class ScorePage extends StatelessWidget {
                       },
                       child: const Padding(
                         padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 16),
-                        child: Text('Restart Quiz'),
+                        child: Text('Back to Menu'),
                       ),
                     ),
                   ],
