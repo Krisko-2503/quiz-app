@@ -1,32 +1,39 @@
-# Quiz App
+# Quiz Game App
 
-This is a simple quiz application built with Flutter. It uses the
-`provider` package for state management to keep track of the current
-question and the player's score.
+A multiple-choice quiz app built with Flutter and Provider, matching the **Mobile Development Foundations Exam** requirements.
 
-## Features implemented
+## Features Implemented
+- Questions stored in `List<Map<String, dynamic>>`.
+- One question per screen with **Column**, **Row**, **Expanded**, **Padding**.
+- **Radio** inputs with form-like validation (prevents advancing without a selection).
+- Navigation to next question; **Score Page** after the last question.
+- Score calculation via a function; conditional performance messages.
+- State management with **Provider**; interactive page is `StatefulWidget`, static pages are `StatelessWidget`.
+- **MediaQuery** for responsive text sizing.
+- “Restart Quiz” resets state and returns to the welcome screen.
 
-- Track the index of the current question in the quiz.
-- Maintain the user's score as they progress.
-- Submit an answer and update the score accordingly.
-- Navigate to the next question after answering.
-- Restart the quiz from the beginning.
+## How to Run
+1. Ensure Flutter SDK is installed.
+2. From the project root:
+   ```bash
+   flutter pub get
+   flutter run
+   ```
 
-## Bonus features
-
-No bonus features have been implemented in this version of the app.
-
-## How to run the app
-
-To run the app on an Android emulator or physical device, make sure you
-have Flutter installed and set up. Then navigate to the project
-directory in your terminal and run:
-
-```sh
-flutter run
+## File Structure
+```
+lib/
+  main.dart
+  quiz_provider.dart
+  data/
+    questions.dart
+  pages/
+    welcome_page.dart
+    question_page.dart
+    score_page.dart
 ```
 
-This command will build and deploy the application to your connected
-device or emulator. Ensure that your development environment
-(Android Studio, VS Code, or another IDE) recognizes the device you
-wish to run the app on.
+## Bonus Ideas (optional)
+- Add animations, progress bar, or themed styling.
+- Load questions from JSON or network.
+- Shuffle questions and answers.
